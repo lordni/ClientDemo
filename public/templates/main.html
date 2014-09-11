@@ -1,0 +1,17 @@
+<div class="col-md-8">
+	<h2>Heading</h2>
+ 			<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+  		<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+</div>
+<div class="col-md-4">
+	<form class="form-signin" role="form" ng-submit="login">
+ 		<h2 class="form-signin-heading">Selvbetjening</h2>
+		<input ng-model="formData.customerId" type="tel" class="form-control" placeholder="Telefonnummer" required autofocus>
+  	<input ng-model="formData.password" type="password" class="form-control" placeholder="Password" required>
+		<label class="checkbox">
+      		<input type="checkbox" value="remember-me"> Husk mig
+		</label>
+		<div class="alert alert-danger" role="alert" ng-show="failingPassword">Forkert telefonnummer eller kodeord</div>
+		<button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="login()">Log ind</button>
+	</form>
+</div>
