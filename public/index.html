@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="ClientDemo">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +9,7 @@
 		<title>Mvno Client Demo</title>
 	</head>
 	<body>
-		<div class="container">
+		<div class="container" ng-controller="mainController">
 			<div class="jumbotron">
       			<div class="container">
         			<h1>Mvno Klient Demo</h1>
@@ -26,7 +26,6 @@
 			    	<form class="form-signin" role="form">
 	    	    		<h2 class="form-signin-heading">Selvbetjening</h2>
 	        			<input type="tel" class="form-control" placeholder="Telefonnummer" required autofocus>
-	        			<br/>
         				<input type="password" class="form-control" placeholder="Password" required>
         				<label class="checkbox">
 		          			<input type="checkbox" value="remember-me"> Husk mig
@@ -35,9 +34,13 @@
     	  			</form>
     	  		</div>
 			</div>
+			<div class="footer">
+				<p>&copy; Mvno 2014</p>
+			</div>
 	    </div> <!-- /container -->
 		<script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script>
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+		<script src="js/client.js"></script>
 	</body>
 </html>
