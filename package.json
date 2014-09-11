@@ -1,0 +1,15 @@
+{
+  "name": "mvno.ClientDemo",
+  "version": "0.0.0",
+  "description": "App for demoing the ClientDemo from mvno",
+  "main": "web.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "niels_kloster",
+  "license": "BSD",
+  "dependencies": {
+    "logfmt": "~0.21.0",
+    "express": "~3.4.8"
+  }
+}
