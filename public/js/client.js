@@ -19,12 +19,13 @@ angular.module('ClientDemo', ['ngRoute'])
 	$locationProvider.html5Mode(false);
 })
 
-.controller('mainController', function($scope, $http) {
+.controller('mainController', function($scope, $http, $location) {
 	console.log('starting mainController');
 	$scope.login = function(){
 		$http.post('/login', $scope.formData)
 			.success(function(data) {
 				$scope.failingPassword = false;
+				$location.path( "/min-side" );
 				console.log(data);
 			})
 			.error(function(data) {
