@@ -4,12 +4,16 @@
   "description": "App for demoing the ClientDemo from mvno",
   "main": "web.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node_modules/.bin/supervisor web.js"
   },
   "author": "niels_kloster",
   "license": "BSD",
   "dependencies": {
     "logfmt": "~0.21.0",
     "express": "~3.4.8"
+  },
+  "devDependencies": {
+    "supervisor": "0.6.0"
   }
 }
