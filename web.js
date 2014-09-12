@@ -1,7 +1,7 @@
 var express = require("express");
 var logfmt = require("logfmt");
 
-var login = require('./api/login.js');
+var login = require('./actions/login.js');
 
 var app = express();
 app.use(logfmt.requestLogger());
