@@ -1,3 +1,5 @@
+'use strict';
+
 var api = require('../api/login.js');
 
 exports.create = function(req, res) {
