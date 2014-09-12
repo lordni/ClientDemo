@@ -35,6 +35,16 @@ angular.module('ClientDemo', ['ngRoute'])
 	};
 })
 
-.controller('authenticatedController', function($scope) {
+.controller('authenticatedController', function($scope, $http) {
 	console.log('starting authenticatedController');
+
+	$scope.balanceText = 'Loading...';
+
+	$http.get('/balance')
+		.success(function(data) {
+			$scope.balanceText = data.balance;
+		})
+		.error(function(err) {
+			console.log('Error: ' + err);
+		});
 });
