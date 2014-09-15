@@ -1,6 +1,8 @@
 "use strict";
 
 var http = require('http');
+var q = require('q');
+var request = require('request');
 
 exports.balance = function (customerId) {
 	var clientId
@@ -24,25 +26,44 @@ exports.balance = function (customerId) {
 	var path = '/v2/clients/' + clientId + '/customers/' + customerId + '/account'
 
 	var options = {
-		hostname: hostname,
-		port: port,
-		path: path,
-		method: 'GET',
+		url: 'http://' + hostname + ':' + port + path,
 		headers: {
 			'X-TELENOR-KEY': telenorKey,
 			'content-type': 'application/json'
 		}
 	};
 
-	var req = http.request(options, function(res) {
-		console.log('RESPONSE STATUS: ' + res.statusCode);
-		console.log('RESPONSE HEADERS: ' + JSON.stringify(res.headers));
-		res.setEncoding('utf8');
-		res.on('data', function (chunk) {
-			console.log('RESPONSE BODY: ' + chunk);
-		});
-	}).on('error', function(e) {
-		console.log('problem with request: ' + e.message);
+	var deferred = q.defer();
+
+	request(options, function (error, response, body) {
+		console.log("status code: " + response.statusCode);
+		var responseRange = response.statusCode.toString().substring(0,1);
+		var responseIsIn200Range = responseRange === "2";
+		if(error || !responseIsIn200Range) {
+			console.log("error");
+			deferred.reject("error" + body);
+		} else {
+			console.log("success");
+			var json = JSON.parse(body);
+			deferred.resolve({balance: json.Balance});
+		}
 	});
-	req.end();
+
+
+	// var req = http.request(options, function(res) {
+	// 	console.log('RESPONSE STATUS: ' + res.statusCode);
+	// 	console.log('RESPONSE HEADERS: ' + JSON.stringify(res.headers));
+	// 	res.setEncoding('utf8');
+	// 	res.on('data', function (data) {
+	// 		console.log('RESPONSE BODY: ' + data);
+	// 		var json = JSON.parse(data);
+	// 		deferred.resolve({ balance: json.Balance });
+	// 	});
+	// }).on('error', function(e) {
+	// 	console.log('problem with request: ' + e.message);
+	// 	deferred.reject(e.message);
+	// });
+	// req.end();
+
+	return deferred.promise;
 }

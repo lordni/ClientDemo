@@ -11,7 +11,9 @@
   "license": "BSD",
   "dependencies": {
     "logfmt": "~0.21.0",
-    "express": "~3.4.8"
+    "express": "~3.4.8",
+    "q": "~1.0.0",
+    "request": "~2.42.0"
   },
   "devDependencies": {
     "supervisor": "0.6.0"

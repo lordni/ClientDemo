@@ -42,9 +42,12 @@ angular.module('ClientDemo', ['ngRoute'])
 
 	$http.get('/balance')
 		.success(function(data) {
+			console.log("Success:");
+			console.debug(data);
 			$scope.balanceText = data.balance;
 		})
 		.error(function(err) {
 			console.log('Error: ' + err);
+			$scope.balanceText = 'Kunde ikke hente din balance.';
 		});
 });
