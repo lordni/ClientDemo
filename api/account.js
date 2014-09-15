@@ -49,21 +49,5 @@ exports.balance = function (customerId) {
 		}
 	});
 
-
-	// var req = http.request(options, function(res) {
-	// 	console.log('RESPONSE STATUS: ' + res.statusCode);
-	// 	console.log('RESPONSE HEADERS: ' + JSON.stringify(res.headers));
-	// 	res.setEncoding('utf8');
-	// 	res.on('data', function (data) {
-	// 		console.log('RESPONSE BODY: ' + data);
-	// 		var json = JSON.parse(data);
-	// 		deferred.resolve({ balance: json.Balance });
-	// 	});
-	// }).on('error', function(e) {
-	// 	console.log('problem with request: ' + e.message);
-	// 	deferred.reject(e.message);
-	// });
-	// req.end();
-
 	return deferred.promise;
 }
