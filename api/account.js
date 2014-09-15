@@ -6,7 +6,8 @@ var request = require('request');
 
 exports.balance = function (customerId) {
 	var clientId
-	, telenorKey;
+	, telenorKey
+	, api_endpoint;
 
 	if(process.env.CLIENT_ID === undefined){
 		throw "You need to specify CLIENT_ID (in env variables)";
@@ -20,13 +21,16 @@ exports.balance = function (customerId) {
 		telenorKey = process.env.X_TELENOR_KEY;
 	}
 
-	var hostname = 'localhost';
-	var port = 3000
+	if(process.env.API_ENDPOINT === undefined) {
+		throw "You need to specify API_ENDPOINT (in env variables)";
+	} else {
+		api_endpoint = process.env.API_ENDPOINT;
+	}
 
 	var path = '/v2/clients/' + clientId + '/customers/' + customerId + '/account'
 
 	var options = {
-		url: 'http://' + hostname + ':' + port + path,
+		url: api_endpoint + path,
 		headers: {
 			'X-TELENOR-KEY': telenorKey,
 			'content-type': 'application/json'
