@@ -36,3 +36,5 @@ Icon
 .Trashes
 
 node_modules/
+
+.env
