@@ -1,4 +1,7 @@
+'use strict';
 
-exports.login = function (username, password) {
-	return username === "123" && password === "123";
-}
+(function() {
+	exports.login = function (username, password) {
+		return username === '123' && password === '123';
+	}
+})();
