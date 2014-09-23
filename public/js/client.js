@@ -26,6 +26,30 @@ angular.module('ClientDemo', [
 
 .controller('mainController', function($scope, $http, $location, mainModule, rx) {
 	console.log('starting mainController');
+
+	var customerIdStream = $scope.$toObservable('formData.customerId')
+		.map(function (data) {
+			return (data.newValue === undefined ? {newValue: '', oldValue: data.oldValue} : data);
+		})
+		.map(function (data) {
+			console.log('the user inputted: "' + data.newValue + '"');
+			return data.newValue;
+		});
+	var passwordStream = $scope.$toObservable('formData.password')
+		.map(function (data) {
+			return (data.newValue === undefined ? {newValue: '', oldValue: data.oldValue} : data);
+		})
+		.map(function (data) {
+			var value = data.newValue;
+			if(value !== undefined){
+				value = value.replace(/./g, "x");
+			}
+			console.log('the user inputted: "' + value + '"');
+			return data.newValue;
+		});
+
+	customerIdStream.subscribe();
+	passwordStream.subscribe();
 	
 	$scope.$createObservableFunction('login')
 		.map(function () { 
