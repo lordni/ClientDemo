@@ -1,6 +1,11 @@
 'use strict';
 
-angular.module('ClientDemo', ['ngRoute', 'ClientDemo.Main', 'rx'])
+angular.module('ClientDemo', [
+	'ngRoute',
+	'ClientDemo.Main',
+	'ClientDemo.Authenticated',
+	'rx'
+])
 
 .config(function ($routeProvider, $locationProvider) {
 	$routeProvider
@@ -44,18 +49,15 @@ angular.module('ClientDemo', ['ngRoute', 'ClientDemo.Main', 'rx'])
 		});
 })
 
-.controller('authenticatedController', function($scope, $http) {
-	console.log('starting authenticatedController');
-
+.controller('authenticatedController', function($scope, $http, authenticatedModule, rx) {
 	$scope.balanceText = 'Loading...';
 
-	$http.get('/balance')
-		.success(function(data) {
+	authenticatedModule.balance()
+		.subscribe(function (response) {
 			console.log("Success:");
-			console.debug(data);
-			$scope.balanceText = data.balance;
-		})
-		.error(function(err) {
+			console.debug(response.data);
+			$scope.balanceText = response.data.balance;
+		}, function (err) {
 			console.log('Error: ' + err);
 			$scope.balanceText = 'Kunde ikke hente din balance.';
 		});
