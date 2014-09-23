@@ -42,17 +42,22 @@
 
 		var deferred = q.defer();
 
+		var responseIsIn200Range = function (response) {
+			return response !== undefined
+				&& response.statusCode !== undefined
+				&& response.statusCode.toString().substring(0,1) === "2"
+		}
+
 		request(options, function (error, response, body) {
-			console.log("status code: " + response.statusCode);
-			var responseRange = response.statusCode.toString().substring(0,1);
-			var responseIsIn200Range = responseRange === "2";
-			if(error || !responseIsIn200Range) {
-				console.log("error");
-				deferred.reject("error" + body);
-			} else {
+			var noError = error === undefined || error === null;
+			if(noError && responseIsIn200Range(response)){
 				console.log("success");
 				var json = JSON.parse(body);
 				deferred.resolve({balance: json.Balance});
+			}
+			else {
+				console.log("error:" + error);
+				deferred.reject("error" + body);
 			}
 		});
 
