@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ClientDemo', ['ngRoute'])
+angular.module('ClientDemo', ['ngRoute', 'ClientDemo.Main', 'rx'])
 
 .config(function ($routeProvider, $locationProvider) {
 	$routeProvider
@@ -19,20 +19,29 @@ angular.module('ClientDemo', ['ngRoute'])
 	$locationProvider.html5Mode(false);
 })
 
-.controller('mainController', function($scope, $http, $location) {
+.controller('mainController', function($scope, $http, $location, mainModule, rx) {
 	console.log('starting mainController');
-	$scope.login = function(){
-		$http.post('/login', $scope.formData)
-			.success(function(data) {
-				$scope.failingPassword = false;
-				$location.path( "/min-side" );
-				console.log(data);
-			})
-			.error(function(data) {
-				$scope.failingPassword = true;
-				console.log('Error: ' + data);
-			});
-	};
+	
+	$scope.$createObservableFunction('login')
+		.map(function () { 
+			return {
+				customerId: $scope.formData.customerId,
+				password: $scope.formData.password
+			}
+		})
+		.flatMapLatest(mainModule.login)
+		.subscribe(function(data) {
+			console.log("login complete");
+			console.log(data);
+
+			$scope.failingPassword = false;
+			$location.path("/min-side");
+		}, function (err) {
+			console.log("login error");
+			console.log(err);
+
+			$scope.failingPassword = true;
+		});
 })
 
 .controller('authenticatedController', function($scope, $http) {

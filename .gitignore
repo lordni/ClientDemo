@@ -26,7 +26,8 @@ $RECYCLE.BIN/
 .LSOverride
 
 # Icon must ends with two \r.
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -37,4 +38,8 @@ Icon
 
 node_modules/
 
+# environment variables (x-telenor-key etc)
 .env
+
+# bower
+bower_components/
