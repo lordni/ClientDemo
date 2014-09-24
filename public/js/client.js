@@ -38,10 +38,7 @@ angular.module('ClientDemo', [
 	var viewModel = mainModule.createViewModel(customerIdStream, passwordStream, loginButtonStream);
 
 	loginButtonStream.subscribe(function () {
-		viewModel.login({
-			customerId: $scope.formData.customerId,
-			password: $scope.formData.password
-		})
+		viewModel.login()
 		.subscribe(function(data) {
 			console.log("login complete");
 			console.log(data);

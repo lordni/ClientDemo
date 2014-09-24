@@ -23,8 +23,18 @@
 			return {
 				createViewModel: function (customerIdStream, passwordStream, loginButtonStream) {
 					var viewModel = {
-						login: createLoginStream
+						login: function () {
+							return createLoginStream(viewModel.credentials);
+						},
+						credentials: {}
 					};
+
+					customerIdStream.subscribe(function (customerId) {
+						viewModel.credentials.customerId = customerId;
+					});
+					passwordStream.subscribe(function (password) {
+						viewModel.credentials.password = password;
+					});
 
 					return viewModel;
 				}
