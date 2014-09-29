@@ -21,6 +21,10 @@ angular.module('ClientDemo', [
       	templateUrl: 'templates/tilmeld.html',
         controller: 'subscribeController'
       })
+      .when('/produkt/:productName', {
+      	templateUrl: 'templates/product.html',
+        controller: 'productController'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -70,6 +74,10 @@ angular.module('ClientDemo', [
 			console.log('Error: ' + err);
 			$scope.balanceText = 'Kunde ikke hente din balance.';
 		});
+})
+
+.controller('productController', function ($scope, $routeParams) {
+	console.log("in productController with product " + $routeParams.productName);
 })
 
 .controller('subscribeController', function ($scope, $routeParams) {
