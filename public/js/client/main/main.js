@@ -21,7 +21,7 @@
 			}
 
 			return {
-				createViewModel: function (customerIdStream, passwordStream, loginButtonStream) {
+				createViewModel: function (customerIdStream, passwordStream) {
 					var viewModel = {
 						login: function () {
 							return createLoginStream(viewModel.credentials);

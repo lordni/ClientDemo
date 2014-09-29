@@ -38,9 +38,8 @@ angular.module('ClientDemo', [
 	var customerIdStream = $scope.$toObservable('formData.customerId').map(extractNewValue);
 	var passwordStream = $scope.$toObservable('formData.password').map(extractNewValue);
 	var loginButtonStream = $scope.$createObservableFunction('login');
-	var subscribeButtonStream = $scope.$createObservableFunction('subscribe');
 
-	var viewModel = mainModule.createViewModel(customerIdStream, passwordStream, loginButtonStream);
+	var viewModel = mainModule.createViewModel(customerIdStream, passwordStream);
 
 	loginButtonStream.subscribe(function () {
 		viewModel.login()
@@ -57,10 +56,6 @@ angular.module('ClientDemo', [
 			$scope.failingPassword = true;
 		});
 	});
-
-	subscribeButtonStream.subscribe(function () {
-		$location.path("/tilmeld");
-	})
 })
 
 .controller('authenticatedController', function($scope, $http, authenticatedModule, rx) {
