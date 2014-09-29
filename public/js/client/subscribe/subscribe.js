@@ -5,7 +5,13 @@
 	app.subscribeModule = {
 		create: function (http) {
 			return {
-				
+				createViewModel: function () {
+					var viewModel = {
+
+					};
+
+					return viewModel;
+				}
 			}
 		}
 	}

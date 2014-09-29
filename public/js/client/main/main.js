@@ -1,8 +1,8 @@
 (function (){
 
-	var app = app || {}
+	window.app = window.app || {}
 
-	app.mainModule = {
+	window.app.mainModule = {
 		create: function (http) {
 
 			var createLoginPromise = function (credentials) {

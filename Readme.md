@@ -1,10 +1,10 @@
 ClientDemo
 ==========
 
-# Setup:
+# Setup
 Run `npm install`
 
-# Start the app:
+# Start the app
 
  * Copy the file .env.example to .env
  * Fill in the two variables you've received from Telenor MVNO (X-TELENOR-KEY and CLIENT-ID) into .env
@@ -14,3 +14,5 @@ Run `npm install`
 
 The app will now perform requests to a Client.Api located at http://localhost:3000 (for now).
 
+# Run tests
+ * Run `npm test`
