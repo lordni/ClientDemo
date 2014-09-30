@@ -33,11 +33,6 @@ angular.module('ClientDemo', [
 	$locationProvider.html5Mode(false);
 })
 
-.controller('productController', function ($scope, $routeParams, productModule) {
-	$scope.product = productModule.mapProduct($routeParams.productName);
-	$scope.productName = $routeParams.productName;
-})
-
 .controller('subscribeController', function ($scope, $routeParams, productModule) {
 
 	$scope.foo = 'foobar';
