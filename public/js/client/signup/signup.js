@@ -2,7 +2,7 @@
 
 	var app = app || {}
 
-	app.subscribeModule = {
+	app.signupModule = {
 		create: function (http) {
 			return {
 				createViewModel: function () {
@@ -16,13 +16,13 @@
 		}
 	}
 
-	angular.module('ClientDemo.Subscribe', ['ClientDemo.Product']).
-		factory('subscribeModule', function ($http) {
-			var module = app.subscribeModule.create($http);
+	angular.module('ClientDemo.Signup', ['ClientDemo.Product']).
+		factory('signupModule', function ($http) {
+			var module = app.signupModule.create($http);
 
 			return module;
 		}).
-		controller('subscribeController', function ($scope, $routeParams, productModule) {
+		controller('signupController', function ($scope, $routeParams, productModule) {
 			$scope.foo = 'foobar';
 			$scope.product = productModule.mapProduct($routeParams.productName);
 		});

@@ -5,7 +5,7 @@ angular.module('ClientDemo', [
 	'ClientDemo.Main',
 	'ClientDemo.Authenticated',
 	'ClientDemo.Product',
-	'ClientDemo.Subscribe',
+	'ClientDemo.Signup',
 	'rx'
 ])
 
@@ -20,8 +20,8 @@ angular.module('ClientDemo', [
         controller: 'authenticatedController'
       })
       .when('/tilmeld/:productName', {
-      	templateUrl: 'templates/subscribe.html',
-        controller: 'subscribeController'
+      	templateUrl: 'templates/signup.html',
+        controller: 'signupController'
       })
       .when('/produkt/:productName', {
       	templateUrl: 'templates/product.html',
