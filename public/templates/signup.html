@@ -1,13 +1,21 @@
 <div class="col-md-8">
-	<h2>Tilmeld produkt: {{ product }}</h2>
-	<div class="row">
-		<div class="col-md-2">{{foo}}</div>
-		<div class="col-md-2">{{foo}}</div>
-		<div class="col-md-2">{{foo}}</div>
-		<div class="col-md-2">{{foo}}</div>
-		<div class="col-md-2">{{foo}}</div>
-		<div class="col-md-2">{{foo}}</div>
+	<h2>Bestil {{ product }}</h2>
+	<div ng-show="state === 'NOT_SUPPORTED'">
+		Not (yet) supported selection
 	</div>
+	<fieldset ng-show="state === 'SIM_CARD_SELECTION'">
+		<legend>Vælg SIM-kort</legend>
+			<label><input type="radio" value="combi" name="simtype" ng-model="simtype">Kombi-SIM</label>
+			<label><input type="radio" value="nano" name="simtype" ng-model="simtype">Nano SIM</label>
+	</fieldset>
+	<fieldset ng-show="state === 'NP_OR_NEW_NUMBER'">
+		<legend>Vælg nyt nummer eller nummerflytning</legend>
+			<label><input type="radio" value="np" name="npOrNewNumber" ng-model="npOrNewNumber">Jeg vil flytte mit nummer</label>
+			<label><input type="radio" value="newNumber" name="npOrNewNumber" ng-model="npOrNewNumber">Jeg vil oprette et nyt nummer</label>
+	</fieldset>
+	<fieldset ng-show="state === 'ACCOUNT_TYPE_SELECTION'">
+		account type selection
+	</fieldset>
 </div>
 <div class="col-md-4">
 	{{foo}}
