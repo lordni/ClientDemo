@@ -14,11 +14,11 @@ angular.module('ClientDemo', [
         controller: 'mainController'
       })
       .when('/min-side', {
-        templateUrl: 'templates/min-side.html',
+        templateUrl: 'templates/authenticated.html',
         controller: 'authenticatedController'
       })
       .when('/tilmeld/:productName', {
-      	templateUrl: 'templates/tilmeld.html',
+      	templateUrl: 'templates/subscribe.html',
         controller: 'subscribeController'
       })
       .when('/produkt/:productName', {
