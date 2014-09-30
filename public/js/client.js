@@ -5,6 +5,7 @@ angular.module('ClientDemo', [
 	'ClientDemo.Main',
 	'ClientDemo.Authenticated',
 	'ClientDemo.Product',
+	'ClientDemo.Subscribe',
 	'rx'
 ])
 
@@ -31,11 +32,4 @@ angular.module('ClientDemo', [
       });
 
 	$locationProvider.html5Mode(false);
-})
-
-.controller('subscribeController', function ($scope, $routeParams, productModule) {
-
-	$scope.foo = 'foobar';
-	$scope.product = productModule.mapProduct($routeParams.productName);
-
 });

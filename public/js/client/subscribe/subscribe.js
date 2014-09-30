@@ -16,10 +16,14 @@
 		}
 	}
 
-	angular.module('ClientDemo.Subscribe', []).
+	angular.module('ClientDemo.Subscribe', ['ClientDemo.Product']).
 		factory('subscribeModule', function ($http) {
 			var module = app.subscribeModule.create($http);
 
 			return module;
+		}).
+		controller('subscribeController', function ($scope, $routeParams, productModule) {
+			$scope.foo = 'foobar';
+			$scope.product = productModule.mapProduct($routeParams.productName);
 		});
 })();
