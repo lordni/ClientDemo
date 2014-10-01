@@ -14,9 +14,20 @@
 			<label><input type="radio" value="newNumber" name="npOrNewNumber" ng-model="npOrNewNumber">Jeg vil oprette et nyt nummer</label>
 	</fieldset>
 	<fieldset ng-show="state === 'ACCOUNT_TYPE_SELECTION'">
-		account type selection
+		<legend>Kontotype</legend>
+			<label><input type="radio" value="private" name="accountTypeSelection" ng-model="accountTypeSelection">Privat</label>
+			<label><input type="radio" value="company" name="accountTypeSelection" ng-model="accountTypeSelection">Ehrvervskunde</label>
+	</fieldset>
+	<fieldset ng-show="state === 'PERSONAL_INFORMATION'">
+		<legend>Kontooplysninger</legend>
+			<div><label>Navn<input ng-class="{ invalidInput: nameInvalid }" type="text" name="name" ng-model="name"></label></div>
+			<div><label>CPR<input type="text" name="cprPublic" ng-model="cprPublic">-<input type="password" name="cprPrivate" ng-model="cprPrivate"></label></div>
+			<div><label>E-mail<input type="text" name="email" ng-model="email"></label></div>
+			<div><label>Gentag e-mail<input type="text" name="emailConfirmation" ng-model="emailConfirmation"></label></div>
 	</fieldset>
 </div>
 <div class="col-md-4">
 	{{foo}}
 </div>
+
+

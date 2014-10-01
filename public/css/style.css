@@ -1,3 +1,7 @@
 .main-content {
 	min-height: 200px;
 }
+
+input[type=text].invalidInput {
+	border-color: red;
+}
