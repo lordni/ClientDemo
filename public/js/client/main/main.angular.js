@@ -2,12 +2,12 @@
 
 (function() {
 	angular.module('ClientDemo.Main', ['ClientDemo.Authenticated']).
-		factory('mainModule', function ($http) {
-			var main = app.mainModule.create($http);
+		factory('mainModule', function ($http, authenticatedModule) {
+			var main = app.mainModule.create($http, authenticatedModule);
 
 			return main;
 		}).
-		controller('mainController', function($scope, $http, $location, mainModule, rx, authenticatedModule) {
+		controller('mainController', function($scope, $http, $location, mainModule, rx) {
 			var extractNewValue = function (data) {
 				return (data.newValue === undefined ? '' : data.newValue);
 			}
@@ -20,7 +20,7 @@
 
 			$scope.userIsLoggedIn = undefined;
 
-			authenticatedModule.balance()
+			viewModel.balanceStream
 				.subscribe(function(response) {
 					console.log("user is logged in");
 					$scope.userIsLoggedIn = true;
