@@ -6,7 +6,7 @@
   "scripts": {
     "test": "node node_modules/karma/bin/karma start",
     "start": "node_modules/.bin/supervisor web.js",
-    "inspect": "node node_modules/node-inspector/bin/node-debug.js --web-port 6789 --debug-port 6788 web.js"
+    "debug": "node node_modules/node-inspector/bin/node-debug.js --web-port 6789 --debug-port 6788 web.js"
   },
   "author": "niels_kloster",
   "license": "BSD",
