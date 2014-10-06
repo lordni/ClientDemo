@@ -5,16 +5,19 @@
   "main": "web.js",
   "scripts": {
     "test": "node node_modules/karma/bin/karma start",
-    "start": "node_modules/.bin/supervisor web.js"
+    "start": "node_modules/.bin/supervisor web.js",
+    "inspect": "node node_modules/node-inspector/bin/node-debug.js --web-port 6789 --debug-port 6788 web.js"
   },
   "author": "niels_kloster",
   "license": "BSD",
   "dependencies": {
-    "logfmt": "~0.21.0",
+    "dotenv": "0.4.0",
     "express": "~3.4.8",
+    "logfmt": "~0.21.0",
+    "passport": "^0.2.1",
+    "passport-local": "^1.0.0",
     "q": "~1.0.0",
-    "request": "~2.42.0",
-    "dotenv": "0.4.0"
+    "request": "~2.42.0"
   },
   "devDependencies": {
     "chai": "^1.9.1",
@@ -26,6 +29,7 @@
     "karma-phantomjs-launcher": "^0.1.4",
     "karma-sinon": "^1.0.3",
     "mocha": "^1.21.4",
+    "node-inspector": "^0.7.4",
     "sinon": "^1.10.3",
     "supervisor": "0.6.0"
   }

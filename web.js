@@ -7,6 +7,7 @@
 
 	var login = require('./actions/login.js');
 	var authenticated = require('./actions/authenticated.js');
+	var passport = require('passport');
 
 	var app = express();
 	app.use(logfmt.requestLogger());
@@ -14,7 +15,18 @@
 	app.use(express.favicon());
 	app.use(express.static(__dirname + '/public'));
 
-	app.post('/login', login.create);
+	app.use(express.cookieParser());
+	app.use(express.session({ secret: 'this is a secret that should be changed to something better' }));
+	app.use(passport.initialize());
+	app.use(passport.session());
+
+
+	app.post('/login',
+		passport.authenticate('local', {}),
+		function(req, res) {
+			console.log("in auth callback");
+			res.redirect('/');
+		});
 
 	app.get('/balance', authenticated.balance);
 
