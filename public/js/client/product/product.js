@@ -1,8 +1,10 @@
+'use strict';
+
+var app = app || {};
+
 (function (){
 
-	window.app = window.app || {}
-
-	window.app.productModule = {
+	app.productModule = {
 		create: function (http) {
 			return {
 				mapProduct: function(productName) {
@@ -17,13 +19,4 @@
 			};
 		}
 	};
-
-	angular.module('ClientDemo.Product', []).
-		factory('productModule', function ($http) {
-			return app.productModule.create($http);
-		}).
-		controller('productController', function ($scope, $routeParams, productModule) {
-			$scope.product = productModule.mapProduct($routeParams.productName);
-			$scope.productName = $routeParams.productName;
-		});
 })();
