@@ -1,9 +1,9 @@
 'use strict';
 
 (function() {
-	angular.module('ClientDemo.Main', []).
-		factory('mainModule', function ($http) {
-			var main = app.mainModule.create($http);
+	angular.module('ClientDemo.Main', ['ClientDemo.Authenticated']).
+		factory('mainModule', function ($http, authenticatedModule) {
+			var main = app.mainModule.create($http, authenticatedModule);
 
 			return main;
 		}).
@@ -17,6 +17,18 @@
 			var loginButtonStream = $scope.$createObservableFunction('login');
 
 			var viewModel = mainModule.createViewModel(customerIdStream, passwordStream);
+
+			$scope.userIsLoggedIn = undefined;
+
+			viewModel.balanceStream
+				.subscribe(function(response) {
+					console.log("user is logged in");
+					$scope.userIsLoggedIn = true;
+					$scope.balance = response.data.balance;
+				}, function(err) {
+					console.log("user is NOT logged in");
+					$scope.userIsLoggedIn = false;
+				});
 
 			loginButtonStream.subscribe(function () {
 				viewModel.login()

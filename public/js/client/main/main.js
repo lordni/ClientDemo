@@ -2,7 +2,7 @@ var app = app || {};
 
 (function (){
 	app.mainModule = {
-		create: function (http) {
+		create: function (http, authenticatedModule) {
 
 			var createLoginPromise = function (credentials) {
 				return http({
@@ -19,13 +19,16 @@ var app = app || {};
 				return Rx.Observable.fromPromise(createLoginPromise(credentials));
 			}
 
+			var balanceStream = authenticatedModule.balance();
+
 			return {
 				createViewModel: function (customerIdStream, passwordStream) {
 					var viewModel = {
 						login: function () {
 							return createLoginStream(viewModel.credentials);
 						},
-						credentials: {}
+						credentials: {},
+						balanceStream: balanceStream
 					};
 
 					customerIdStream.subscribe(function (customerId) {
