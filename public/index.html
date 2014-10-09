@@ -9,19 +9,28 @@
 		<title>Mvno Client Demo</title>
 	</head>
 	<body>
-		<div class="container">
-			<div class="jumbotron">
+		<div class="container-fluid">
+			<div class="jumbotron no-padding">
       			<div class="container">
         			<h1>Mvno Klient Demo</h1>
         			<p>Denne side er en demonstration af hvordan et grundlæggende website, der bruger Mvno's klient Api.</p>
         			<p><a class="btn btn-primary btn-lg" role="button" src="http://api.apps.test.mvno.local/" >Læs den øvrige dokumentation her &raquo;</a></p>
       			</div>
+      			<div class="container">
+	      			<ul class="nav nav-tabs" role="tablist">
+						<li class="active"><a href="#">Home</a></li>
+						<li><a href="#">Profile</a></li>
+						<li><a href="#">Messages</a></li>
+					</ul>
+				</div>
     		</div>
+    		<!-- navigation point -->
     		<div class="row main-content" ng-view></div>
 			<div class="footer">
 				<p>&copy; Mvno 2014</p>
 			</div>
 	    </div> <!-- /container -->
+
 		<script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
 
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>

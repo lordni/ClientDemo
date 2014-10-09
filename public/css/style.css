@@ -1,7 +1,19 @@
 .main-content {
 	min-height: 200px;
+	background-color: lightgreen;
 }
 
 input[type=text].invalidInput {
 	border-color: red;
+}
+
+.no-margin{
+	margin:0px;
+}
+
+.no-padding{
+	padding:0px;
+}
+body{
+background-color: lightgreen;
 }
